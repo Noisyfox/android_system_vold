@@ -209,7 +209,7 @@ void DirectVolume::handlePartitionAdded(const char *devpath, NetlinkEvent *evt) 
     }
     mPendingPartMap &= ~(1 << part_num);
 
-    if (!mPendingPartMap) {
+    if (!mPendingPartMap || part_num == mPartIdx) {
 #ifdef PARTITION_DEBUG
         SLOGD("Dv:partAdd: Got all partitions - ready to rock!");
 #endif
